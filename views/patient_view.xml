@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <record id="tree_view_patient" model="ir.ui.view">
+            <field name="name">patient.tree.view</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="birth_date"/>
+                    <field name="blood_type"/>
+                    <field name="image"/>
+                    <field name="age"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+        <record id="form_view_patient" model="ir.ui.view">
+            <field name="name">patient.form.view</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group string="Medical Diagnosis Information">
+                                <field name="doctor_id"/>
+                                <field name="department_id"/>
+                                <field name="dep_capcity"/>
+                                <field name="blood_type"/>
+                                <field name="cr_ratio"/>
+                                <field name="p_c_r"/>
+                                <field name="history"/>
+                            </group>
+                            <group string="Personal Information">
+                                <field name="first_name"/>
+                                <field name="last_name"/>
+                                <field name="birth_date"/>
+                                <field name="image"/>
+                                <field name="age"/>
+                                <field name="address"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="patient_view" model="ir.actions.act_window">
+            <field name="name">Patients</field>
+            <field name="res_model">hms.patient</field>
+        </record>
+
+        <menuitem id="hms_root_menu" name="Hospital Management"/>
+        <menuitem id="patient_menu" name="Patients" parent="hms_root_menu"
+            action="patient_view"/>
+    </data>
+</odoo>
