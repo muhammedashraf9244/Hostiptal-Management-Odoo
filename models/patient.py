@@ -16,4 +16,15 @@ class HmsPatient(models.Model):
     department_id=fields.Many2one('hms.department')
     doctor_id=fields.Many2one('hms.doctors')
     dep_capcity=fields.Integer(related='department_id.capcity',string="department capcity")
+    history_id=fields.One2many("history.patient.line","patient_id")
+
+
+
+
+class HistoryPatientLine(models.Model):
+    _name = 'history.patient.line'
+    description=fields.Char()
+    patient_id=fields.Many2one("hms.patient",readonly=True,invisible=True)
+
+
 

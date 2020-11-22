@@ -10,4 +10,6 @@
       'views/doctors_view.xml',
       'views/department_view.xml',
     ],
+    'depends': ['base'],
+
 }

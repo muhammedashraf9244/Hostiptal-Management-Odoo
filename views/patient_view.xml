@@ -40,6 +40,17 @@
                                 <field name="address"/>
                             </group>
                         </group>
+                        <notebook>
+                            <page string="History">
+                                <field name="history_id">
+                                    <tree>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="description"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
