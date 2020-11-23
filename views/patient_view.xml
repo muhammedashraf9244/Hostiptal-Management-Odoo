@@ -23,19 +23,21 @@
                     <sheet>
                         <group>
                             <group string="Medical Diagnosis Information">
-                                <field name="doctor_id"/>
-                                <field name="department_id"/>
-                                <field name="dep_capcity"/>
+                                <field name="department_id" domain="[('is_open','=','True')]"/>
+                                <field name="doctor_id"  widget="many2many_tags"
+                                 attrs="{'invisible':[('department_id','=',False)]}" />
+                                <field name="dep_capcity" />
                                 <field name="blood_type"/>
-                                <field name="cr_ratio"/>
                                 <field name="p_c_r"/>
-                                <field name="history"/>
+                                <field name="cr_ratio" attrs="{'required':[('p_c_r','=',True)]}"/>
+                                <field name="history" attrs="{'invisible':[('age','&lt;',50)]}"/>
+
                             </group>
                             <group string="Personal Information">
                                 <field name="first_name"/>
                                 <field name="last_name"/>
                                 <field name="birth_date"/>
-                                <field name="image"/>
+                                <field name="image" widget="image"/>
                                 <field name="age"/>
                                 <field name="address"/>
                             </group>
@@ -43,7 +45,7 @@
                         <notebook>
                             <page string="History">
                                 <field name="history_id">
-                                    <tree>
+                                    <tree editable="bottom">
                                     <field name="create_uid"/>
                                     <field name="create_date"/>
                                     <field name="description"/>
