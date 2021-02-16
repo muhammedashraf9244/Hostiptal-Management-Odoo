@@ -15,40 +15,49 @@
                 </tree>
             </field>
         </record>
+
+        <!-- Patient Form View-->
         <record id="form_view_patient" model="ir.ui.view">
             <field name="name">patient.form.view</field>
             <field name="model">hms.patient</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button string="Set Good" name="set_good" type="object" />
+                        <button string="Set Fair" name="set_fair" type="object" />
+                        <button string="Set Serious" name="set_serious" type="object" />
+                        <button string="Back To Undetermined" name="back_to_undetermined" type="object" />
+                        <field name="state" widget="statusbar" statusbar_visible="undetermined,good,fair,serious"/>
+                    </header>
                     <sheet>
                         <group>
+                            <group string="Personal Information">
+                                <field name="first_name"/>
+                                <field name="last_name"/>
+                                <field name="email"/>
+                                <field name="birth_date"/>
+                                <field name="image" widget="image"/>
+                                <field name="age"/>
+                                 <field name="history" attrs="{'invisible':[('age','&lt;',50)]}"/>
+                                <field name="address"/>
+                            </group>
                             <group string="Medical Diagnosis Information">
-                                <field name="department_id" domain="[('is_open','=','True')]"/>
+                                <field name="department_id" domain="[('is_open','=',True)]"/>
                                 <field name="doctor_id"  widget="many2many_tags"
                                  attrs="{'invisible':[('department_id','=',False)]}" />
                                 <field name="dep_capcity" />
                                 <field name="blood_type"/>
                                 <field name="p_c_r"/>
                                 <field name="cr_ratio" attrs="{'required':[('p_c_r','=',True)]}"/>
-                                <field name="history" attrs="{'invisible':[('age','&lt;',50)]}"/>
-
-                            </group>
-                            <group string="Personal Information">
-                                <field name="first_name"/>
-                                <field name="last_name"/>
-                                <field name="birth_date"/>
-                                <field name="image" widget="image"/>
-                                <field name="age"/>
-                                <field name="address"/>
                             </group>
                         </group>
                         <notebook>
                             <page string="History">
                                 <field name="history_id">
                                     <tree editable="bottom">
-                                    <field name="create_uid"/>
-                                    <field name="create_date"/>
-                                    <field name="description"/>
+                                        <field name="write_uid" string="Create by"/>
+                                        <field name="write_date" string="Date"/>
+                                        <field name="description"/>
                                     </tree>
                                 </field>
                             </page>
