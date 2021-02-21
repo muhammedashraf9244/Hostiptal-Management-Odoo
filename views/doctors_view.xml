@@ -35,6 +35,6 @@
         </record>
 
          <menuitem id="doctors_menu" name="Doctors" parent="hms_root_menu"
-            action="doctors_view"/>
+            action="doctors_view" groups="hms.hms_manager_group"/>
     </data>
 </odoo>

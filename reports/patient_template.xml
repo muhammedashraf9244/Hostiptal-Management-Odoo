@@ -1,0 +1,107 @@
+<odoo>
+    <data>
+        <template id="patient_template_view">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h3 style="color:red">Patient Status Report</h3>
+                                </div>
+                                <div class="col-6">
+                                    <t t-if="o.image">
+                                         <img t-att-src="'data:image/png;base64,%s' % to_text(o.image)"
+                                              t-att-title="o.first_name" t-att-alt="Image"
+                                              style="max-height:5cm; max-width:5cm;"/>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <pre><b>Name</b>: <span t-field="o.first_name"/> <span t-field="o.last_name"/></pre>
+                                </div>
+                                <div class="col-6">
+                                    <t t-if="o.birth_date">
+                                        <pre><b>Birth date</b>: <span t-field="o.birth_date"/></pre>
+                                    </t>
+                                    <t t-else="">No There Birth date</t>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <t t-if="o.age">
+                                        <pre><b>Age</b>: <span t-field="o.age"/></pre>
+                                    </t>
+                                    <t t-else="">No There Age</t>
+                                </div>
+                                <div class="col-6">
+                                    <t t-if="o.p_c_r">
+                                            <pre><b>PCR</b>: <span t-field="o.p_c_r"/></pre>
+                                    </t>
+                                    <t t-else="">No There PCR</t>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class ='col-6'>
+                                    <t t-if="o.department_id">
+                                            <pre><b>Department</b>: <span t-field="o.department_id.name"/></pre>
+                                    </t>
+                                    <t t-else="">No There Department</t>
+                                </div>
+                                <div class ='col-6'>
+                                    <t t-if="o.blood_type">
+                                            <pre><b>Blood Type</b>: <span t-field="o.blood_type"/></pre>
+                                    </t>
+                                    <t t-else="">No There Blood Type</t>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <t t-if="o.doctor_id">
+                                        <p>
+                                            <b>Doctors: </b>
+                                            <t t-foreach="o.doctor_id" t-as="doctor_name">
+                                                <span t-field="doctor_name.first_name"/>,
+                                            </t>
+                                        </p>
+                                    </t>
+                                    <t t-else="">No There Docotrs</t>
+                                </div>
+                                <div class="col-6">
+                                    <t t-if="o.email">
+                                            <pre><b>Email</b>: <span t-field="o.email"/></pre>
+                                    </t>
+                                    <t t-else="">No There Email</t>
+                                </div>
+                            </div>
+                             <!--Log History Table -->
+                            <div class="row">
+                                <h3 style="text-align: center;color:red;"></h3>
+                                <table class ="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>User</th>
+                                            <th>Date</th>
+                                            <th>Info</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="o.history_id" t-as="patient_history">
+                                            <tr>
+                                                <td><span t-field="patient_history.write_uid" /></td>
+                                                <td><span t-field="patient_history.write_date" /></td>
+                                                <td><span t-field="patient_history.description"/> </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

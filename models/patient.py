@@ -33,10 +33,11 @@ class HmsPatient(models.Model):
 
     @api.constrains("email")
     def check_email(self):
-        my_pattern = r'^[a-zA-Z0-9\.]+@[a-z0-9]+\.(com|org|net)$'
-        is_match = re.match(my_pattern,self.email)
-        if not is_match:
-            raise UserError(f'This email {self.email} is Invalid')
+        if self.email:
+            my_pattern = r'^[a-zA-Z0-9\.]+@[a-z0-9]+\.(com|org|net)$'
+            is_match = re.match(my_pattern,self.email)
+            if not is_match:
+                raise UserError(f'This email {self.email} is Invalid')
 
     # Action of buttons of state
     def set_good(self):

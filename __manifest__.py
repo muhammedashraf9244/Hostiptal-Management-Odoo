@@ -11,6 +11,10 @@
       'views/doctors_view.xml',
       'views/department_view.xml',
       'views/crm_inherit_view.xml',
+      'security/hms_security.xml',
+      'security/ir.model.access.csv',
+      'reports/patient_template.xml',
+      'reports/report_view.xml',
     ],
     'depends': ['base','crm'],
 
