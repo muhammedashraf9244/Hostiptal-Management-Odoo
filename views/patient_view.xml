@@ -43,7 +43,7 @@
                             </group>
                             <group string="Medical Diagnosis Information">
                                 <field name="department_id" domain="[('is_open','=',True)]"/>
-                                <field name="doctor_id"  widget="many2many_tags" groups="hms.hms_manager_group"
+                                <field name="doctor_id"  widget="many2many_tags" groups="Hostiptal-Management-Odoo.hms_manager_group"
                                  attrs="{'invisible':[('department_id','=',False)]}" />
                                 <field name="dep_capcity" />
                                 <field name="blood_type"/>
