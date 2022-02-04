@@ -12,12 +12,13 @@
                                 </div>
                                 <div class="col-6">
                                     <t t-if="o.image">
-                                         <img t-att-src="'data:image/png;base64,%s' % to_text(o.image)"
-                                              t-att-title="o.first_name" t-att-alt="Image"
-                                              style="max-height:5cm; max-width:5cm;"/>
+                                        <img t-att-src="'data:image/png;base64,%s' % to_text(o.image)"
+                                             t-att-title="o.first_name" t-att-alt="Image"
+                                             style="max-height:5cm; max-width:5cm;"/>
                                     </t>
                                 </div>
                             </div>
+                            <br/>
                             <div class="row">
                                 <div class="col-6">
                                     <pre><b>Name</b>: <span t-field="o.first_name"/> <span t-field="o.last_name"/></pre>
@@ -32,27 +33,27 @@
                             <div class="row">
                                 <div class="col-6">
                                     <t t-if="o.age">
-                                        <pre><b>Age</b>: <span t-field="o.age"/></pre>
+                                        <pre><b>Age</b>: <span t-field="o.age"/> </pre>
                                     </t>
                                     <t t-else="">No There Age</t>
                                 </div>
                                 <div class="col-6">
                                     <t t-if="o.p_c_r">
-                                            <pre><b>PCR</b>: <span t-field="o.p_c_r"/></pre>
+                                        <pre><b>PCR</b>: <span t-field="o.p_c_r"/> </pre>
                                     </t>
                                     <t t-else="">No There PCR</t>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class ='col-6'>
+                                <div class='col-6'>
                                     <t t-if="o.department_id">
-                                            <pre><b>Department</b>: <span t-field="o.department_id.name"/></pre>
+                                        <pre><b>Department</b>: <span t-field="o.department_id.name"/> </pre>
                                     </t>
                                     <t t-else="">No There Department</t>
                                 </div>
-                                <div class ='col-6'>
+                                <div class='col-6'>
                                     <t t-if="o.blood_type">
-                                            <pre><b>Blood Type</b>: <span t-field="o.blood_type"/></pre>
+                                        <pre><b>Blood Type</b>: <span t-field="o.blood_type"/> </pre>
                                     </t>
                                     <t t-else="">No There Blood Type</t>
                                 </div>
@@ -61,7 +62,7 @@
                                 <div class="col-6">
                                     <t t-if="o.doctor_id">
                                         <p>
-                                            <b>Doctors: </b>
+                                            <b>Doctors:</b>
                                             <t t-foreach="o.doctor_id" t-as="doctor_name">
                                                 <span t-field="doctor_name.first_name"/>,
                                             </t>
@@ -71,15 +72,15 @@
                                 </div>
                                 <div class="col-6">
                                     <t t-if="o.email">
-                                            <pre><b>Email</b>: <span t-field="o.email"/></pre>
+                                        <pre><b>Email</b>: <span t-field="o.email"/> </pre>
                                     </t>
                                     <t t-else="">No There Email</t>
                                 </div>
                             </div>
-                             <!--Log History Table -->
+                            <!--Log History Table -->
+                            <h3 style="text-align: center;color:red;">Patient History</h3>
                             <div class="row">
-                                <h3 style="text-align: center;color:red;"></h3>
-                                <table class ="table table-striped table-hover">
+                                <table class="table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>User</th>
@@ -88,11 +89,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <t t-foreach="o.history_id" t-as="patient_history">
+                                        <t t-foreach="o.history_ids" t-as="patient_history">
                                             <tr>
-                                                <td><span t-field="patient_history.write_uid" /></td>
-                                                <td><span t-field="patient_history.write_date" /></td>
-                                                <td><span t-field="patient_history.description"/> </td>
+                                                <td>
+                                                    <span t-field="patient_history.write_uid"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="patient_history.write_date"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="patient_history.description"/>
+                                                </td>
                                             </tr>
                                         </t>
                                     </tbody>

@@ -3,7 +3,9 @@
         <report id="patient_report"
                 string="Patient Report"
                 model="hms.patient"
-                name="hms.patient_template_view"
-                report_type="qweb-pdf"/>
+                name="Hostiptal-Management-Odoo.patient_template_view"
+                report_type="qweb-pdf"
+                print_report_name="'Patient - %s %s' % (object.first_name, object.last_name)"
+        />
     </data>
 </odoo>
